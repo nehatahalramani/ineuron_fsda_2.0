@@ -1,0 +1,31 @@
+USE WAREHOUSE DEMO;
+USE DATABASE SQLDEMO;
+--regexp is used for cleaning textual data like NLP (National Language Procesing )
+---(^) superscript symbol - start of the line eg.. ^(India) where ever word India is there in starting of the sentance it will give that result
+---()- grouping the expression we use this in regular expression (regexp)
+---($) doller symbol- end of the line eg.. (India)$ where ever word India is there in ending of the sentance it will give that result
+---(|)pipe symbol - this symbol is OR that means if either this or this expression 
+---(.) dot- matches any character except null , eg,, (re.d) this means after re single charcter followed by d should be the result 
+---{m}- curly braches - matches character exactly m times eg- s{2}- it means search S character 2 times , essential , password , sister 
+---{m,n}- curly braches with 2 arguments- mactches charcter m times , but not more then n times 
+---(*)- zero or more then that Occurrence of that character 
+---(+)- atleast one time or more then than occuring the character (used more in data analysis )
+---[]- if we want to match list 
+---\. - if we want to read (.) anywhere we use forward slase , meta character we read by \.
+--\\W- non-word 
+--\\w - word
+
+create or replace table strings (v varchar(50));
+insert into strings (v) values
+    ('San Francisco'),
+    ('San Jose'),
+    ('Santa Clara'),
+    ('Sacramento');
+    
+ -- String pattern matching using REGEXP_LIKE
+WITH tbl
+  AS (select t.column1 mycol 
+      from values('A1 something'),('B1 something'),('Should not be matched'),('C1 should be matched') t;
+
+SELECT * FROM tbl WHERE regexp_like (mycol,'[a-zA-z]\\d{1,}[\\s0-9a-zA-Z]*');
+--second word start with small s

@@ -1,0 +1,33 @@
+USE WAREHOUSE DEMO;
+USE DATABASE SQLDEMO;
+SELECT * FROM"SNOWFLAKE"."INFORMATION_SCHEMA"."TABLES";
+create table hospital_table (patient_id integer,
+                             patient_name varchar, 
+                             billing_address varchar,
+                             diagnosis varchar, 
+                             treatment varchar,
+                             cost number(10,2));
+DESCRIBE TABLE HOSPITAL_TABLE;
+
+insert into hospital_table 
+        (patient_id, patient_name, billing_address, diagnosis, treatment, cost) 
+    values
+        (1, 'Mark Knopfler', '1982 Telegraph Road', 'Industrial Disease', 
+            'a week of peace and quiet', 2000.00)
+        (2, 'Guido van Rossum', '37 Florida St.', 'python bite', 'anti-venom', 
+            70000.00);
+SELECT * FROM HOSPITAL_TABLE;
+ CREATE VIEW DOCTOR_VIEW AS 
+ SELECT patient_id, patient_name, diagnosis, treatment from hospital_table;
+ CREATE VIEW ACCOUNTANT_VIEW AS 
+ SELECT patient_id, patient_name, billing_address, cost from hospital_table;
+ SELECT * FROM DOCTOR_VIEW;
+ SELECT * FROM ACCOUNTANT_VIEW;
+ 
+ --Show all of the types of medical problems for each patient
+ SELECT DISTINCT DIAGNOSIS FROM DOCTOR_VIEW;
+ 
+ --Show the cost of each treatment (without showing personally identifying information about specific patients)
+ SELECT TREATMENT,COST
+ FROM DOCTOR_VIEW AS DV,ACCOUNTANT_VIEW AS AV
+ WHERE DV.PATIENT_ID=AV.PATIENT_ID;

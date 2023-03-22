@@ -1,0 +1,46 @@
+USE WAREHOUSE DEMO;
+USE DATABASE SQLDEMO;
+
+CREATE OR REPLACE TABLE NT_ART
+(artist_gender CHAR(20),
+artist_name VARCHAR(200),
+artist_role CHAR(50),
+data_medium VARCHAR(200), 
+data_thumbnail VARCHAR2(200),
+data_title VARCHAR2(800),
+data_url VARCHAR2(200),
+dimensions_depth CHAR(20),
+dimensions_height CHAR(20),
+dimensions_width CHAR(20),
+metadata_acquisition_date CHAR(50),
+metadata_creation_decade CHAR(50),
+metadata_creation_year CHAR(50),
+metadata_credit VARCHAR(500),
+artist_birth_location VARCHAR(500),
+artist_birth_year CHAR(50),
+artist_death_location VARCHAR(500),
+artist_death_year CHAR(50)
+);
+
+SELECT * FROM NT_ART;
+SELECT DISTINCT ARTIST_BIRTH_LOCATION FROM NT_ART;
+SELECT DISTINCT metadata_acquisition_date FROM NT_ART;
+SELECT ARTIST_BIRTH_LOCATION,metadata_acquisition_date FROM NT_ART;
+SELECT DISTINCT artist_name FROM NT_ART;
+
+select artist_birth_location,metadata_creation_decade from NT_ART
+where metadata_creation_decade = (
+SELECT metadata_creation_decade FROM NT_ART
+where artist_role='artist'
+group by metadata_creation_decade
+order by COUNT(artist_role) desc
+limit 1);
+
+SELECT DISTINCT DATA_MEDIUM FROM NT_ART;
+
+SELECT artist_birth_location, COUNT(DISTINCT metadata_creation_decade) FROM NT_ART GROUP BY artist_birth_location order by 2 desc;
+
+SELECT data_medium, COUNT(*) FROM NT_ART 
+GROUP BY data_medium
+order by count(*) desc
+limit 3;

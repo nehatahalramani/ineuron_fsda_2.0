@@ -1,0 +1,48 @@
+USE WAREHOUSE DEMO;
+USE DATABASE SQLDEMO;
+
+CREATE OR REPLACE TABLE NT_CONSUMER_COMPLAINT
+(Date_Received STRING,
+ Product_Name VARCHAR(50),
+ Sub_Product VARCHAR2(100),
+ Issue VARCHAR2(100),
+ Sub_Issue VARCHAR2(100),
+ Consumer_Complaint_Narrative STRING,
+ Company_Public_Response STRING,
+ Company VARCHAR2(150),
+ State_Name VARCHAR(50),
+ Zip_Code STRING,
+ Tags VARCHAR(50),
+ Consumer_Consent_Provided STRING,
+ Submitted_via STRING,
+ Date_Sent_to_Company STRING,
+ Company_Response_to_Consumer VARCHAR(40),
+ Timely_Response CHAR(4),
+ Consumer_Disputed CHAR(10),
+ Complaint_ID NUMBER(12,0) Not NUll Primary key
+);
+
+DESCRIBE TABLE NT_CONSUMER_COMPLAINT;
+SELECT * FROM NT_CONSUMER_COMPLAINT;
+SELECT * FROM NT_CONSUMER_COMPLAINT LIMIT 100;
+
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT;
+
+--SYNTAX- SELECT DISTINCT COL_NAME FROM TABLE_NAME;
+
+SELECT DISTINCT PRODUCT_NAME FROM NT_CONSUMER_COMPLAINT;
+
+--LIKE KEYWORD --MOST HIGHLY COMMAND USED 
+
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT WHERE PRODUCT_NAME LIKE 'Bank%'; -- % means bank should be at first followed by other charcters 
+
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT WHERE PRODUCT_NAME LIKE '%account%'; -- %account% it means account can come anywhere in that phrase 
+
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT WHERE PRODUCT_NAME LIKE '%loan';--% means any sequence of character (%account- means account word coming last in that dataset)
+
+
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT WHERE COMPANY LIKE '_a%';
+
+----------IN KEYWORD--------
+SELECT DISTINCT * FROM NT_CONSUMER_COMPLAINT WHERE PRODUCT_NAME IN ('Mortgage','Consumer Loan','Debt collection');
+

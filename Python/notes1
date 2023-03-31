@@ -1,0 +1,270 @@
+# Basics of python 
+
+PRINT(NEHA)
+
+print("neha") ##is use to print any data
+
+print('neha')
+
+type(print('neha')) ## type is use to check the datatype 
+
+a=5
+print(a)
+
+type(a)
+
+b=3.5
+print(b)
+
+type(b)
+
+num1=input("Enter First Number")
+num2=input("Enter second Number")
+
+
+results=num1+num2 
+print (results) ##this is giving me 1020 because it is treating as a string and doing concatenation whenever we give 
+                ##anything in "" it will treat as a string 
+
+num1=int(input("Enter First Number "))
+num2=int(input("Enter second Number "))
+
+results=num1+num2 
+print (results)
+
+num1=int(input("Enter First Number "))
+num2=int(input("Enter second Number "))
+
+sum_num = num1+num2
+diff_num = num1-num2
+multi_num = num1 * num2
+div_num = num1 / num2 
+mod_num = num1 % num2 
+
+print("Sum of two Numbers",num1, " and ", num2," is",sum_num)
+print("Difference of two Numbers",num1, " and ", num2," is",diff_num)
+print("Multiplication  of two Numbers",num1, " and ", num2," is",multi_num)
+print("Division  of two Numbers",num1, " and ", num2," is",div_num)
+print("Modulus of two Numbers",num1, " and ", num2," is",mod_num)
+
+# range functions
+
+range(10) ##prints list of value from the given range 0 to n-1 
+
+list(range(10)) ##print number from 0-9 (10-1)
+
+list(range(3,10))
+
+list(range(3,10,2)) ## print number from 3 till 9 skipping 1 number between (step size-1)
+
+list(range(3,20,3)) ## print number from 3 till 19 skipping 3 number between (step size-1)
+
+list(range(3.5,20,3))## range doesn't work on floating point numbers
+
+list(range(int(3.5),int(20),3))
+
+list(range(3,20,-3)) ##there is no syntax error but it will give an empty list 
+
+list(range(20,3,-3)) ##we can go backword provided the starting number is bigger 
+
+list(range(20,3,3))
+
+list(range(-20,-3,-3))
+
+list(range(-3,-20,-3))
+
+list(range(-3,-20,3))
+
+list(range(-36,-20,3))
+
+name = "INDIA  "
+type(name)
+
+len_name = len(name)
+
+print(len_name)
+
+list(range(len_name))
+
+list_item = [] ##square brackets stands for a list 
+
+print(list_item)
+
+list_item = ["hello", 55,67, 'a','neha','INDIA',True,False]
+
+print(list_item)
+
+len_list = len(list_item)
+print(len_list)
+
+list_item[4] ##index in python starts with 0 that is why it is giving me neha as result accessing the 4th elementlist_item
+
+type(list_item)
+
+list_item[2:] ##give all the items from 3rd onwords 
+
+list_item[:] # : means it will give all the items of list 
+
+list_item[:4] #it will give a:b-1 index 
+
+list_item[3:7]
+
+list_item[3:30]
+
+list_item
+
+list_item[::-1]## to reverse the list of item 
+
+list_item[2:9:2]# skipping one element in between 
+
+[2,3,5,6,'Roshan',2.3] + ['Neha',76,34]#list can be concatenated with , list only 
+
+# Append function (widely used in DA)
+
+name = "iNeuron"
+
+
+name[len(name)-2]
+
+name[len(name)-2] = "m" ##strings are immutable that , means you cannot change the string in python 
+
+list_item.append('Neha Tahalramani')## adding items at the end of the list 
+
+list_item
+
+list_item.append('RJD', 23) ## multiple items won't get added 
+
+list_item.append(['RJD', 23]) ## this is called list inside list it will treat this ['RJD', 23] as a 1 item 
+
+list_item
+
+list_item[12][0]
+
+list_item
+
+# INSERT FUNCTION
+
+list_item.insert(2,'INDIA')
+
+list_item
+
+list_item.insert(5,'Nikhil')#other elements will get shifted 
+
+list_item
+
+list_item.insert(6,['Nishika','Rahul',25])
+
+list_item
+
+list_item [6][1] ##to check the element list inside list 
+
+# Replace function 
+
+list_item.replace(2,'INEURON')
+
+list_item [2]= "HAppy" #list are muttable i.e i can change the elements present at particular index 
+
+list_item
+
+# hot favorite question asked in Interview : difference between append and extend
+
+# EXTEND FUNCTION 
+
+s = [1,2,3,4,5,6]
+
+s.append([7,9,10,11,12])## wraps elements as it gets added at the end of the list 
+
+s
+
+s.append(123)
+
+s
+
+s.append(22,34,34)
+
+s.extend([22,34,'Nehi']) ## add elements individually and not Together unlike append 
+
+s
+
+s [6] = 7
+
+s
+
+s.index(5)## if there is multiple values of same in list it will pick the first occurrence from the list 
+
+list_item
+
+list_item[::-1]
+
+list_item_rev = list_item[::-1]
+
+list_item_rev
+
+list_item = list_item.reverse()
+
+list_item
+
+list_item_rev
+
+list_item_rev[::-1]
+
+list_item = list_item_rev[::-1]
+
+list_item
+
+list_item2 = ["neha","rjd","rahul"]
+
+list_item2.append("anshu")
+
+list_item2.extend(["anshu","laura"])
+
+list_item2
+
+print(list_item2.sort())
+
+list_reverse = list_item.reverse()
+
+print(list_item)
+
+sorted_item = list_item2.sort() #reassignment of sort is not working 
+
+sorted_item = list_item2.sort(reverse= True)
+
+print(list_item2)
+
+list2  = ['nehi','rekha','anshu','roshan','limca']
+
+sorted(list2, reverse = True) ##sorting in decending order
+
+sorted(list2) ##sorted in ascending order 
+
+list2 
+
+## sorted() is not hampering orginal data and it will not work in mixed datatype 
+
+sort_copy_list2 = list2.sort()
+
+list2
+
+sort_copy_list2 = list2.sort(reverse=True)
+
+list2
+
+## sort() will hamper your orginal data 
+
+print(reversed(list2))
+
+list_item_nums = [11,33,55,66,22,77,99,88]
+
+list_item_sort_acs = sorted(list_item_nums)
+list_item_sort_decs = sorted(list_item_nums, reverse = True)
+
+print(list_item_sort_acs)
+print(list_item_sort_decs)
+
+list_item_nums ## original one will remain same no changes will be there 
+
+list_item_reversed = list(reversed(list_item_nums)) ##need to retypecasting to integer for it to work 
+
+print(list_item_reversed)
+
